@@ -812,8 +812,7 @@ main {
 
 .certificate-item {
   min-width: 50%;
-  max-width: 80%;
-  scroll-snap-align: start;
+  max-width: 100%;
 }
 
 .certificate-item img {
