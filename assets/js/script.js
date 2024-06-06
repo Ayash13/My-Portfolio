@@ -191,3 +191,34 @@ navigationLinks.forEach((navLink, i) => {
     window.scrollTo(0, 0);
   });
 });
+
+function showCertificate(img) {
+  const modal = document.createElement('div');
+  modal.classList.add('certificate-modal');
+  modal.style.display = 'flex';
+  modal.style.position = 'fixed';
+  modal.style.top = '0';
+  modal.style.left = '0';
+  modal.style.width = '100%';
+  modal.style.height = '100%';
+  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  modal.style.justifyContent = 'center';
+  modal.style.alignItems = 'center';
+  modal.style.zIndex = '1000';
+
+  const certificateImg = document.createElement('img');
+  certificateImg.src = img.src;
+  certificateImg.style.maxWidth = '90%';
+  certificateImg.style.maxHeight = '90%';
+  certificateImg.style.border = '5px solid white';
+
+  modal.appendChild(certificateImg);
+
+  document.body.appendChild(modal);
+
+  modal.addEventListener('click', function () {
+    document.body.removeChild(modal);
+  });
+}
+
+window.showCertificate = showCertificate;
