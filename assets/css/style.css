@@ -2128,10 +2128,9 @@ iframe {
 }
 
 .clickMe {
-  display: block;
+  display: inline-block;
   text-align: center;
-  margin-bottom: 6px;
-  margin-top: -10px;
+  margin: 10px;
   color: #000000;
   text-decoration: none;
   font-weight: bold;
@@ -2139,6 +2138,18 @@ iframe {
 
 .clickMe:hover {
   text-decoration: underline;
+}
+
+.modal-content .clickMe {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.modal-content .link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 @media screen and (max-width: 992px) {

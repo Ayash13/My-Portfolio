@@ -9,6 +9,7 @@ const projects = [
     imgSrc: "./assets/images/Website KMTI.png",
     alt: "Website KMTI",
     url: "https://ayash13.github.io/kmti/",
+    github: "https://github.com/Ayash13/kmti"
   },
   {
     title: "Pokedex",
@@ -16,6 +17,7 @@ const projects = [
     imgSrc: "./assets/images/pokedex_web.png",
     alt: "Pokedex",
     url: "https://ayash13.github.io/pokedex/",
+    github: "https://github.com/Ayash13/pokedex"
   },
   {
     title: "Website MATAF TI",
@@ -23,6 +25,7 @@ const projects = [
     imgSrc: "./assets/images/website_mataf.png",
     alt: "Website MATAF TI",
     url: "https://ayash13.github.io/Mataf-TI-22.github.io/",
+    github: "https://github.com/Ayash13/Mataf-TI-22.github.io"
   },
   {
     title: "Website Sponsor MATAF TI",
@@ -30,20 +33,23 @@ const projects = [
     imgSrc: "./assets/images/sponsor_mataf.png",
     alt: "Website Sponsor MATAF TI",
     url: "https://ayash13.github.io/MATAF-TI-SPONSOR.github.io/",
+    github: "https://github.com/Ayash13/MATAF-TI-SPONSOR.github.io"
   },
   {
     title: "Lompah",
     category: "applications",
     imgSrc: "./assets/images/Lompah.png",
     alt: "Lompah",
-    url: "https://ayash13.github.io/Duplicate-GitPage/",
+    url: "https://github.com/Ayash13/Lompah-App",
+    github: "https://github.com/Ayash13/Lompah-App"
   },
   {
     title: "Nandur",
     category: "applications",
     imgSrc: "./assets/images/Nandur.png",
     alt: "Nandur",
-    url: "https://www.youtube.com/embed/WkLT26To_xE",
+    url: "https://github.com/Ayash13/Nandur",
+    github: "https://github.com/Ayash13/Nandur"
   },
   {
     title: "Ayflix",
@@ -51,6 +57,7 @@ const projects = [
     imgSrc: "./assets/images/ayflix.png",
     alt: "Ayflix",
     url: "https://ayash13.github.io/Ayflix/",
+    github: "https://github.com/Ayash13/Ayflix"
   },
   {
     title: "A day in my life",
@@ -58,6 +65,7 @@ const projects = [
     imgSrc: "./assets/images/dayInMyLife.png",
     alt: "A day in my life",
     url: "https://ayash13.github.io/Day-in-my-life/",
+    github: "https://github.com/Ayash13/Day-in-my-life"
   },
   {
     title: "Official Web MMFEST 23",
@@ -65,9 +73,17 @@ const projects = [
     imgSrc: "./assets/images/MMF-23.png",
     alt: "MMFEST 23",
     url: "https://www.mmfest23.com/",
+    github: "https://github.com/Ayash13/MMFEST-23"
+  },
+  {
+    title: "Trashify",
+    category: "applications",
+    imgSrc: "./assets/images/Trashify.png",
+    alt: "Trashify",
+    url: "https://github.com/Ayash13/Project_Gemastik",
+    github: "https://github.com/Ayash13/Project_Gemastik"
   },
 ];
-
 
 const categories = ["All", "Applications", "Web development"];
 
@@ -90,7 +106,7 @@ function displayProjects(filteredProjects) {
     projectItem.setAttribute('data-category', project.category);
 
     projectItem.innerHTML = `
-      <a class="open-modal" data-url="${project.url}" data-modal="#myModal${index + 1}">
+      <a class="open-modal" data-url="${project.url}" data-modal="#myModal${index + 1}" data-category="${project.category}">
         <figure style="cursor: pointer" class="project-img">
           <div class="project-item-icon-box">
             <ion-icon name="eye-outline"></ion-icon>
@@ -104,32 +120,31 @@ function displayProjects(filteredProjects) {
 
     projectList.appendChild(projectItem);
 
-    const modal = document.createElement('div');
-    modal.classList.add('modal');
-    modal.id = `myModal${index + 1}`;
-    modal.innerHTML = `
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <a class="clickMe" target="_blank" href="${project.url}">Go to the page</a>
-        <iframe id="myIframe${index + 1}" src="" frameborder="0"></iframe>
-      </div>
-    `;
-    document.body.appendChild(modal);
+    if (project.category !== "applications") {
+      const modal = document.createElement('div');
+      modal.classList.add('modal');
+      modal.id = `myModal${index + 1}`;
+      modal.innerHTML = `
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="link-container">
+            <a class="clickMe" target="_blank" href="${project.url}">Go to the page</a>
+            <a class="clickMe" target="_blank" href="${project.github}"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+          <iframe id="myIframe${index + 1}" src="" frameborder="0"></iframe>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
   });
 
   setupModals();
 }
 
-function filterProjects(category) {
-  if (category === 'All') {
-    return projects;
-  } else {
-    return projects.filter(project => project.category === category.toLowerCase());
-  }
-}
-
+// Initial display of all projects
 displayProjects(projects);
 
+// Setup category filter buttons
 const filterBtns = document.querySelectorAll('[data-filter-btn]');
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -141,35 +156,37 @@ filterBtns.forEach(btn => {
   });
 });
 
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
+// Modal functionality
 function setupModals() {
-  const modals = document.querySelectorAll('.modal');
   const modalLinks = document.querySelectorAll('.open-modal');
-  const closeButtons = document.querySelectorAll('.close');
 
   modalLinks.forEach(function (link) {
     link.onclick = function (event) {
       event.preventDefault();
-      var url = link.getAttribute('data-url');
-      var modal = document.querySelector(link.getAttribute('data-modal'));
-      var iframe = modal.querySelector('iframe');
-      iframe.src = url;
-      modal.style.display = "block";
+      const category = link.getAttribute('data-category');
+      if (category === "applications") {
+        const githubUrl = link.closest('a').getAttribute('data-url');
+        window.open(githubUrl, '_blank');
+      } else {
+        const url = link.getAttribute('data-url');
+        const modal = document.querySelector(link.getAttribute('data-modal'));
+        const iframe = modal.querySelector('iframe');
+        iframe.src = url;
+        modal.style.display = "block";
+      }
     };
   });
 
+  const closeButtons = document.querySelectorAll('.close');
   closeButtons.forEach(function (button) {
     button.onclick = function () {
-      var modal = button.closest('.modal');
+      const modal = button.closest('.modal');
       modal.style.display = "none";
     };
   });
 
   window.onclick = function (event) {
+    const modals = document.querySelectorAll('.modal');
     modals.forEach(function (modal) {
       if (event.target == modal) {
         modal.style.display = "none";
@@ -178,6 +195,7 @@ function setupModals() {
   };
 }
 
+// Page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
