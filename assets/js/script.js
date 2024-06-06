@@ -83,23 +83,15 @@ const projects = [
     url: "https://github.com/Ayash13/Project_Gemastik",
     github: "https://github.com/Ayash13/Project_Gemastik"
   },
-  {
-    title: "Magang MSIB Alternate Web",
-    category: "web development",
-    imgSrc: "./assets/images/MSIB.png",
-    alt: "MSIB",
-    url: "https://ayash13.github.io/Magang-MSIB/",
-    github: "https://github.com/Ayash13/Magang-MSIB"
-  },
 ];
 
 const categories = ["All", "Applications", "Web development"];
 
 const filterList = document.querySelector('.filter-list');
-categories.forEach(category => {
+categories.forEach((category, index) => {
   const filterItem = document.createElement('li');
   filterItem.classList.add('filter-item');
-  filterItem.innerHTML = `<button data-filter-btn>${category}</button>`;
+  filterItem.innerHTML = `<button data-filter-btn${index === 0 ? ' class="active"' : ''}>${category}</button>`;
   filterList.appendChild(filterItem);
 });
 
@@ -157,10 +149,8 @@ function filterProjects(category) {
   }
 }
 
-// Initial display of all projects
 displayProjects(projects);
 
-// Setup category filter buttons
 const filterBtns = document.querySelectorAll('[data-filter-btn]');
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -172,7 +162,6 @@ filterBtns.forEach(btn => {
   });
 });
 
-// Modal functionality
 function setupModals() {
   const modalLinks = document.querySelectorAll('.open-modal');
 
@@ -211,7 +200,6 @@ function setupModals() {
   };
 }
 
-// Page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
