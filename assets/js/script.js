@@ -141,6 +141,14 @@ function displayProjects(filteredProjects) {
   setupModals();
 }
 
+function filterProjects(category) {
+  if (category === "All") {
+    return projects;
+  } else {
+    return projects.filter(project => project.category.toLowerCase() === category.toLowerCase());
+  }
+}
+
 // Initial display of all projects
 displayProjects(projects);
 
@@ -165,7 +173,7 @@ function setupModals() {
       event.preventDefault();
       const category = link.getAttribute('data-category');
       if (category === "applications") {
-        const githubUrl = link.closest('a').getAttribute('data-url');
+        const githubUrl = link.getAttribute('data-url');
         window.open(githubUrl, '_blank');
       } else {
         const url = link.getAttribute('data-url');
@@ -201,11 +209,11 @@ const pages = document.querySelectorAll("[data-page]");
 
 navigationLinks.forEach((navLink, i) => {
   navLink.addEventListener("click", () => {
-    navigationLinks.forEach((link) => link.classList.remove("active"));
-    pages.forEach((page) => page.classList.remove("active"));
+    navigationLinks.forEach((link) => link.classList.remove('active'));
+    pages.forEach((page) => page.classList.remove('active'));
 
-    navLink.classList.add("active");
-    pages[i].classList.add("active");
+    navLink.classList.add('active');
+    pages[i].classList.add('active');
     window.scrollTo(0, 0);
   });
 });
@@ -239,4 +247,4 @@ function showCertificate(img) {
   });
 }
 
-window.showCertificate = showCertificate;
+window.showCertificate = show
