@@ -83,6 +83,14 @@ const projects = [
     url: "https://github.com/Ayash13/Project_Gemastik",
     github: "https://github.com/Ayash13/Project_Gemastik"
   },
+  {
+    title: "Magang  Alternate Web",
+    category: "web development",
+    imgSrc: "./assets/images/MSIB.png",
+    alt: "MSIB",
+    url: "https://ayash13.github.io/Magang-MSIB/",
+    github: "https://github.com/Ayash13/Magang-MSIB"
+  },
 ];
 
 const categories = ["All", "Applications", "Web development"];
