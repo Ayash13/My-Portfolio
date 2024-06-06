@@ -1,6 +1,5 @@
 'use strict';
 
-// element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 const projects = [
@@ -72,7 +71,6 @@ const projects = [
 
 const categories = ["All", "Applications", "Web development"];
 
-// Generate category buttons
 const filterList = document.querySelector('.filter-list');
 categories.forEach(category => {
   const filterItem = document.createElement('li');
@@ -81,7 +79,6 @@ categories.forEach(category => {
   filterList.appendChild(filterItem);
 });
 
-// Generate project items
 const projectList = document.querySelector('.project-list');
 
 function displayProjects(filteredProjects) {
@@ -107,7 +104,6 @@ function displayProjects(filteredProjects) {
 
     projectList.appendChild(projectItem);
 
-    // Create modal and append to body
     const modal = document.createElement('div');
     modal.classList.add('modal');
     modal.id = `myModal${index + 1}`;
@@ -132,10 +128,8 @@ function filterProjects(category) {
   }
 }
 
-// Initial display of all projects
 displayProjects(projects);
 
-// Setup category filter buttons
 const filterBtns = document.querySelectorAll('[data-filter-btn]');
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -147,14 +141,11 @@ filterBtns.forEach(btn => {
   });
 });
 
-// sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
 sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
-// modal functionality
 function setupModals() {
   const modals = document.querySelectorAll('.modal');
   const modalLinks = document.querySelectorAll('.open-modal');
@@ -187,7 +178,6 @@ function setupModals() {
   };
 }
 
-// page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
