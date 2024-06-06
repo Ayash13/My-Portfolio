@@ -95,17 +95,8 @@ const projects = [
 
 const categories = ["All", "Applications", "Web development"];
 
-const filterList = document.querySelector('.filter-list');
-categories.forEach((category, index) => {
-  const filterItem = document.createElement('li');
-  filterItem.classList.add('filter-item');
-  filterItem.innerHTML = `<button data-filter-btn${index === 0 ? ' class="active"' : ''}>${category}</button>`;
-  filterList.appendChild(filterItem);
-});
-
-const projectList = document.querySelector('.project-list');
-
 function displayProjects(filteredProjects) {
+  const projectList = document.querySelector('.project-list');
   projectList.innerHTML = '';
   filteredProjects.forEach((project, index) => {
     const projectItem = document.createElement('li');
@@ -158,6 +149,14 @@ function filterProjects(category) {
 }
 
 displayProjects(projects);
+
+const filterList = document.querySelector('.filter-list');
+categories.forEach((category, index) => {
+  const filterItem = document.createElement('li');
+  filterItem.classList.add('filter-item');
+  filterItem.innerHTML = `<button data-filter-btn${index === 0 ? ' class="active"' : ''}>${category}</button>`;
+  filterList.appendChild(filterItem);
+});
 
 const filterBtns = document.querySelectorAll('[data-filter-btn]');
 filterBtns.forEach(btn => {
@@ -222,6 +221,12 @@ navigationLinks.forEach((navLink, i) => {
   });
 });
 
+const sidebarBtn = document.querySelector('[data-sidebar-btn]');
+const sidebar = document.querySelector('.sidebar');
+sidebarBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+});
+
 function showCertificate(img) {
   const modal = document.createElement('div');
   modal.classList.add('certificate-modal');
@@ -251,4 +256,4 @@ function showCertificate(img) {
   });
 }
 
-window.showCertificate = show
+window.showCertificate = showCertificate;

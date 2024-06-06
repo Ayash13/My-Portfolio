@@ -1350,6 +1350,41 @@ textarea.form-input::-webkit-resizer {
     max-width: calc(100% - 15px);
     margin-right: 0;
   }
+  .filter-list {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+
+  .filter-item {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+
+  .filter-item:last-child {
+    margin-right: 0;
+  }
+
+  .filter-select-box {
+    display: none;
+  }
+}
+
+.filter-item button {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.filter-item button.active {
+  color: var(--orange-yellow-crayola);
+}
+
+.filter-item button:hover {
+  color: var(--orange-yellow-crayola);
 }
 
 /**
