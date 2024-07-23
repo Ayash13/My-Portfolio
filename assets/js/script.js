@@ -257,3 +257,13 @@ function showCertificate(img) {
 }
 
 window.showCertificate = showCertificate;
+
+function openResumeOverlay() {
+  const resumeUrl = './assets/files/Muhammad Ayash Al-fatih-resume newest.pdf';
+  document.getElementById('resumeIframe').src = resumeUrl;
+  document.getElementById('resumeOverlay').style.display = "flex";
+}
+
+function closeResumeOverlay() {
+  document.getElementById('resumeOverlay').style.display = "none";
+}
