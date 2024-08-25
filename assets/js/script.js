@@ -72,8 +72,8 @@ const projects = [
     category: "web development",
     imgSrc: "./assets/images/MMF-23.png",
     alt: "MMFEST 23",
-    url: "https://ayash13.github.io/MMFEST-23/",
-    github: "https://github.com/Ayash13/MMFEST-23"
+    url: "https://ayash13.github.io/MMF-23-New/",
+    github: "https://github.com/Ayash13/MMF-23-New.git"
   },
   {
     title: "Trashify",
